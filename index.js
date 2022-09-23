@@ -158,12 +158,19 @@ console.log(list)
 
 // add list handler 
 const addHandler = ()=>{
+
+    if(localStorage.length == 0){
+        localStorage.setItem('list', JSON.stringify([]))
+    }
+
     
 if(input.value!==''){
-    localStorage.setItem('list',JSON.stringify([]))
+ 
+   
     let storedList = JSON.parse(localStorage.getItem('list'));
     storedList.push(input.value);
-    console.log(storedList)
+    // console.log(storedList)
+    localStorage.setItem('list', JSON.stringify(storedList))
     elementCreate()
     input.value = '';
 
