@@ -89,8 +89,9 @@ const renderToDo = ()=>{
 
 let list = localStorage.getItem('list')
 let ourList = JSON.parse(list)
+console.log(list)
 // foreach code 
-    ourList.forEach((e, index, arr)=>{
+   ourList && ourList.forEach((e, index, arr)=>{
     let item = document.createElement('div');
     item.className = 'item';
     item.style.display = 'flex';
@@ -159,10 +160,10 @@ let ourList = JSON.parse(list)
 const addHandler = ()=>{
     
 if(input.value!==''){
+    localStorage.setItem('list',JSON.stringify([]))
     let storedList = JSON.parse(localStorage.getItem('list'));
     storedList.push(input.value);
     console.log(storedList)
-    localStorage.setItem('list',JSON.stringify(storedList))
     elementCreate()
     input.value = '';
 
